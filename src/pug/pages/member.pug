@@ -1,0 +1,36 @@
+extends ../layout/main
+
+block variables
+  - var page = 'member';
+  - var title = '會員資料';
+  - var description = 'Description for Webpack + Pug';
+  - var pageClass = 'index-page';
+
+block content
+  // begin::Container
+  #kt_content_container.container-xxl
+    // begin::Table
+    .card.card-custom.mt-6.mt-xl-9
+      //- // begin::Card header
+      //- .card-header.mt-5.border-0
+      //-   // begin::Card title
+      //-   .card-title.flex-column
+      //-     h3.fw-bolder.mb-1 #{title}
+      //-     //- .fs-6.text-gray-400 Total $260,300 sepnt so far
+      //- // end::Card header
+      // begin::Card body
+      .card-body
+        .row.justify-content-center
+          .col-lg-8
+            .form-group.row
+              .col-lg-3
+                label.col-form-label
+                  span 會員編號
+              .col-lg-9
+                input.form-control.form-control-solid.form-control-lg(name='product_no', type='text', value='155', disabled)
+            .form-group.row
+              .col-lg-3
+                label.col-form-label
+                  span 帳號
+              .col-lg-9
+                input.form-control.form-control-solid.form-control-lg(name='product_no', type='text', value='155', disabled)
