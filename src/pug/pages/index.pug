@@ -1,6 +1,7 @@
 extends ../layout/main
 
 block variables
+  - var page = 'index';
   - var title = 'Webpack + Pug';
   - var description = 'Description for Webpack + Pug';
   - var pageClass = 'index-page';
@@ -11,7 +12,6 @@ block content
       +item('item title', 'item descr')
       +item('item title', 'item descr')
       +item('item title', 'item descr')
-  example-component
 
 
 block script
