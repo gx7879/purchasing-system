@@ -1,8 +1,8 @@
 extends ../layout/main
 
 block variables
-  - var page = 'addProduct';
-  - var title = '新增代購商品';
+  - var page = 'member';
+  - var title = '會員資料';
   - var description = 'Description for Webpack + Pug';
   - var pageClass = 'index-page';
 
@@ -11,53 +11,55 @@ block content
   #kt_content_container.container-xxl
     // begin::Table
     .card.card-custom.mt-6.mt-xl-9
-      // begin::Card header
-      .card-header.mt-5.border-0
-        // begin::Card title
-        .card-title.flex-column
-          h3.fw-bolder.mb-1 #{title}
-          //- .fs-6.text-gray-400 Total $260,300 sepnt so far
-        // begin::Card title
-      // end::Card header
+      //- // begin::Card header
+      //- .card-header.mt-5.border-0
+      //-   // begin::Card title
+      //-   .card-title.flex-column
+      //-     h3.fw-bolder.mb-1 #{title}
+      //-     //- .fs-6.text-gray-400 Total $260,300 sepnt so far
+      //- // end::Card header
       // begin::Card body
-      .card-body.pt-0
-        // begin::Table container
-        // begin::Card toolbar
-        .mb-7
-          .row.align-items-center
-            .col
-              .row.align-items-center
-                .col-3
-                  .input-icon
-                    input.form-control.form-control-solid(type='number', placeholder='搜尋訂單編號', name='order_number')
-                    span
-                      i.flaticon2-search-1.text-muted
-            .col-auto
-              button.btn.btn-sm.btn-light-primary.px-6.font-weight-bold(type="button") 搜尋
-        // begin::Card toolbar
-        .table-responsive
-          // begin::Table
-          table.table.table-row-dashed.table-row-gray-300.gy-7
-            thead
-              tr.fw-bolder.fs-6.text-gray-800
-                th #
-                th 名稱
-                th 帳號
-                th 角色
-                th 
-            tbody
-              tr
-                td 1
-                td 王小明
-                td abcd
-                td 會員
-                td.text-right
-                  button.btn.btn-sm.btn-primary(type="button" data-bs-toggle="modal" data-bs-target="#kt_modal_add_customer") 編輯
-              tr
-                td 2
-                td 陳小春
-                td test
-                td 路人
-                td.text-right
-                  button.btn.btn-sm.btn-primary(type="button") 編輯
-          // end::Table
+      .card-body
+        .card.card-custom.gutter-b
+          .card-body
+            .d-flex
+              // begin: Pic
+              .flex-shrink-0.mr-7
+                .symbol.symbol-50.symbol-lg-120
+                  img(alt='Pic', src='assets/media/project-logos/3.png')
+              .ml-auto
+                a.btn.btn-light-primary(href="order.html") 查看詳細
+              // end: Pic
+
+            .separator.separator-solid.my-7
+            // begin: Items
+            .d-flex.align-items-center.flex-wrap
+              // begin: Item
+              .d-flex.align-items-center.flex-lg-fill.mr-5.my-1
+                .d-flex.flex-column.text-dark-75
+                  span.font-weight-bolder.font-size-sm 日期
+                  span.font-weight-bolder.font-size-h5
+                    | 2023/01/01
+              // end: Item
+              // begin: Item
+              .d-flex.align-items-center.flex-lg-fill.mr-5.my-1
+                .d-flex.flex-column.text-dark-75
+                  span.font-weight-bolder.font-size-sm 訂單編號
+                  span.font-weight-bolder.font-size-h5
+                    | 123
+              // end: Item
+              // begin: Item
+              .d-flex.align-items-center.flex-lg-fill.mr-5.my-1
+                .d-flex.flex-column.text-dark-75
+                  span.font-weight-bolder.font-size-sm 商品金額(人民幣)
+                  span.font-weight-bolder.font-size-h5
+                    | $ 1,000
+              // end: Item
+              // begin: Item
+              .d-flex.align-items-center.flex-lg-fill.mr-5.my-1
+                .d-flex.flex-column.text-dark-75
+                  span.font-weight-bolder.font-size-sm 商品金額(越南盾)
+                  span.font-weight-bolder.font-size-h5
+                    | $ 1,000
+              // end: Item
+            // begin: Items
