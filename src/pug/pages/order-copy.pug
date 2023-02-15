@@ -15,7 +15,7 @@ block content
       .card-header.border-0
         //- .card-title
         //-   h3.card-label Basic Demo
-        .card-toolbar
+        .card-toolbar.ml-auto
           a.btn.btn-light-primary(href='#') 返回訂單
       //- // begin::Card header
       //- .card-header.mt-5.border-0
@@ -29,17 +29,17 @@ block content
         .row.justify-content-center
           .col-lg-8
             .form-group.row
-              .col-3
+              .col-lg-3
                 label.col-form-label
                   span 日期
-              .col-9
-                input.form-control-plaintext(type='text', readonly, placeholder="2023/01/01")
+              .col-lg-9
+                input.form-control.form-control-solid.datepicker.w-100(type='text', readonly, placeholder="Select date")
             .form-group.row
-              .col-3
+              .col-lg-3
                 label.col-form-label
                   span 訂單編號
-              .col-9
-                input.form-control-plaintext(type='text', value='155', readonly)
+              .col-lg-9
+                input.form-control.form-control-solid(type='text', value='155', disabled)
             .form-group.row
               .col-lg-3
                 label.col-form-label
@@ -54,77 +54,85 @@ block content
                   span.btn.btn-xs.btn-icon.btn-circle.btn-white.btn-hover-text-primary.btn-shadow(data-action='cancel', data-toggle='tooltip', title='Cancel avatar')
                     i.ki.ki-bold-close.icon-xs.text-muted
             .form-group.row
-              .col-3
+              .col-lg-3
                 label.col-form-label
                   span 連結
-              .col-9
-                input.form-control-plaintext(type='text', value='admin', readonly)
+              .col-lg-9
+                input.form-control.form-control-solid(type='text', value='admin', disabled)
             .form-group.row
-              .col-3
+              .col-lg-3
                 label.col-form-label
                   span 商品金額(人民幣)
-              .col-9
-                input.form-control-plaintext(type='text', value='100', readonly)
+              .col-lg-9
+                input.form-control.form-control-solid(type='text', value='100', disabled)
             .form-group.row
-              .col-3
+              .col-lg-3
                 label.col-form-label
                   span 商品金額(越南盾)
-              .col-9
-                input.form-control-plaintext(type='text', value='100', readonly)
+              .col-lg-9
+                input.form-control.form-control-solid(type='text', value='100', disabled)
             .form-group.row
-              .col-3
+              .col-lg-3
                 label.col-form-label
                   span 數量
-              .col-9
-                input.form-control-plaintext(type='text', value='Alex', readonly)
+              .col-lg-9
+                input.form-control.form-control-solid(type='text', value='Alex', disabled)
             .form-group.row
-              .col-3
+              .col-lg-3
                 label.col-form-label
                   span 重量
-              .col-9
-                input.form-control-plaintext(type='text', value='男', readonly)
+              .col-lg-9
+                input.form-control.form-control-solid(type='text', value='男', disabled)
             .form-group.row
-              .col-3
+              .col-lg-3
                 label.col-form-label
                   span 物流類型
-              .col-9
-                input.form-control-plaintext(type='text', value="1~2天", readonly)
+              .col-lg-9
+                select.form-control.form-control-solid
+                  option(value="") 1~2天
+                  option(value="") 3~4天
+                  option(value="") 5~6天
+                  option(value="") 10~14天
             .form-group.row
-              .col-3
+              .col-lg-3
                 label.col-form-label
                   span 木架
-              .col-9
-                input.form-control-plaintext(type='text', value="是", readonly)
+              .col-lg-9
+                select.form-control.form-control-solid
+                  option(value="") 是
+                  option(value="") 否
             .form-group.row
-              .col-3
+              .col-lg-3
                 label.col-form-label
                   span 木架費用
-              .col-9
-                input.form-control-plaintext(type='text', value='123', readonly)
+              .col-lg-9
+                input.form-control.form-control-solid(type='text', value='123')
             .form-group.row
-              .col-3
+              .col-lg-3
                 label.col-form-label
                   span 貴重商品
-              .col-9
-                input.form-control-plaintext(type='text', value="有保險", readonly)
+              .col-lg-9
+                select.form-control.form-control-solid
+                  option(value="") 有保險
+                  option(value="") 無保險
             .form-group.row
-              .col-3
+              .col-lg-3
                 label.col-form-label
                   span 保險費用
-              .col-9
-                input.form-control-plaintext(type='text', value='123', readonly)
+              .col-lg-9
+                input.form-control.form-control-solid(type='text', value='123')
             .form-group.row
-              .col-3
+              .col-lg-3
                 label.col-form-label
                   span 備註
-              .col-9
-                textarea.form-control-plaintext(rows='5', readonly)
+              .col-lg-9
+                textarea.form-control.form-control-solid(rows='5')
             .form-group.row
-              .col-3
+              .col-lg-3
                 label.col-form-label
                   span 總金額
-              .col-9
-                input.form-control-plaintext(type='text', value='123', readonly)
+              .col-lg-9
+                input.form-control.form-control-solid(type='text', value='123')
 
 
 block script
