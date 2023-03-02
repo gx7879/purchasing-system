@@ -6,6 +6,9 @@ block variables
   - var description = 'Description for Webpack + Pug';
   - var pageClass = 'index-page';
 
+block style
+  link(rel="stylesheet", href="assets/plugins/custom/uppy/uppy.bundle.css")
+
 block content
   // begin::Container
   #kt_content_container.container-xxl
@@ -32,14 +35,11 @@ block content
                 label.col-form-label
                   span 圖片
               .col-lg-9
-                .image-input.image-input-outline#kt_image_1
-                  .image-input-wrapper(style='background-image: url(assets/media/users/100_1.jpg)')
-                  label.btn.btn-xs.btn-icon.btn-circle.btn-white.btn-hover-text-primary.btn-shadow(data-action='change', data-toggle='tooltip', data-original-title='Change avatar')
-                    i.fa.fa-pen.icon-sm.text-muted
-                    input(type='file', name='profile_avatar', accept='.png, .jpg, .jpeg')
-                    input(type='hidden', name='profile_avatar_remove')
-                  span.btn.btn-xs.btn-icon.btn-circle.btn-white.btn-hover-text-primary.btn-shadow(data-action='cancel', data-toggle='tooltip', title='Cancel avatar')
-                    i.ki.ki-bold-close.icon-xs.text-muted
+                .uppy#kt_uppy_3
+                  .uppy-drag
+                  .uppy-informer
+                  .uppy-progress
+                  .uppy-thumbnails
             .form-group.row
               .col-lg-3
                 label.col-form-label
@@ -64,5 +64,55 @@ block content
                 button.btn.btn-light-primary 新增代購
 
 block script
+  script(src="assets/plugins/custom/uppy/uppy.bundle.js")
   script.
-    var avatar1 = new KTImageInput('kt_image_1');
+    const ProgressBar = Uppy.ProgressBar;
+    const Informer = Uppy.Informer;
+    const Tus = Uppy.Tus;
+    var id = '#kt_uppy_3';
+    var uppyDrag = Uppy.Core({
+      autoProceed: true,
+      restrictions: {
+        maxFileSize: 1000000, // 1mb
+        maxNumberOfFiles: 5,
+        minNumberOfFiles: 1,
+        allowedFileTypes: ['image/*', 'video/*']
+      }
+    });
+    uppyDrag.use(Uppy.DragDrop, { target: id + ' .uppy-drag' });
+    uppyDrag.use(ProgressBar, {
+      target: id + ' .uppy-progress',
+      hideUploadButton: false,
+      hideAfterFinish: false
+    });
+    uppyDrag.use(Informer, { target: id + ' .uppy-informer'  });
+    uppyDrag.use(Tus, { endpoint: 'https://master.tus.io/files/' });
+
+    uppyDrag.on('complete', function(file) {
+      var imagePreview = "";
+      $.each(file.successful, function(index, value){
+        var imageType = /image/;
+        var thumbnail = "";
+        if (imageType.test(value.type)){
+          thumbnail = '<div class="uppy-thumbnail"><img src="'+value.uploadURL+'"/></div>';
+        }
+        var sizeLabel = "bytes";
+        var filesize = value.size;
+        if (filesize > 1024){
+          filesize = filesize / 1024;
+          sizeLabel = "kb";
+          if(filesize > 1024){
+            filesize = filesize / 1024;
+            sizeLabel = "MB";
+          }
+        }
+        imagePreview += '<div class="uppy-thumbnail-container" data-id="'+value.id+'">'+thumbnail+' <span class="uppy-thumbnail-label">'+value.name+' ('+ Math.round(filesize, 2) +' '+sizeLabel+')</span><span data-id="'+value.id+'" class="uppy-remove-thumbnail"><i class="flaticon2-cancel-music"></i></span></div>';
+      });
+      $(id + ' .uppy-thumbnails').append(imagePreview);
+    });
+
+    $(document).on('click', id + ' .uppy-thumbnails .uppy-remove-thumbnail', function(){
+      var imageId = $(this).attr('data-id');
+      uppyDrag.removeFile(imageId);
+      $(id + ' .uppy-thumbnail-container[data-id="'+imageId+'"').remove();
+    });

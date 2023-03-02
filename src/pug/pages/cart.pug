@@ -8,6 +8,15 @@ block variables
 
 block style
   style.
+    label {
+      position: relative;
+    }
+    label input {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      z-index: 99;
+    }
     input:checked ~ .card{
       border: 2px solid #6993FF !important;
     }
